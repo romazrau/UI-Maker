@@ -1,10 +1,24 @@
+import { PagesRoutingModule } from './features/pages/pages-routing.module';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: PagesRoutingModule
+  },
+  // {
+  //   path: 'editor',
+  //   loadChildren:
+  //   () => import('./features/box-model-editor').then( m => m.BoxModelEditorModule)
+  // }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  declarations: [],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules,
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
